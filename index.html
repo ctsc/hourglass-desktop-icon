@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hourglass Timer</title>
+</head>
+<body>
+  <!-- Title Bar -->
+  <div id="titlebar">
+    <span class="title">Hourglass</span>
+    <div class="window-controls">
+      <button id="btn-pin" title="Pin on top" aria-label="Pin window on top">&#9675;</button>
+      <button id="btn-minimize" title="Minimize" aria-label="Minimize window">&#8722;</button>
+      <button id="btn-close" class="close" title="Close" aria-label="Close window">&#10005;</button>
+    </div>
+  </div>
+
+  <!-- App -->
+  <div id="app">
+    <!-- Mode Toggle -->
+    <div id="mode-toggle">
+      <button data-mode="free" class="active">Free Timer</button>
+      <button data-mode="pomodoro">Pomodoro</button>
+    </div>
+
+    <!-- Task Input -->
+    <input id="task-input" type="text" placeholder="What are you working on?" maxlength="60" spellcheck="false" />
+
+    <!-- Duration Presets -->
+    <div id="duration-bar"></div>
+
+    <!-- Canvas -->
+    <div id="canvas-container"></div>
+
+    <!-- Countdown -->
+    <div id="countdown" role="timer" aria-live="off" aria-label="Time remaining">00:00</div>
+
+    <!-- Controls -->
+    <div id="controls">
+      <button data-action="start" class="primary">START</button>
+      <button data-action="pause">PAUSE</button>
+      <button data-action="reset">RESET</button>
+    </div>
+
+    <!-- Pomodoro Pips -->
+    <div id="pomodoro-pips" style="display:none;"></div>
+
+    <!-- Bottom Bar -->
+    <div id="bottom-bar">
+      <button id="btn-sound" title="Sound settings" aria-label="Sound settings">&#9835;</button>
+      <button id="btn-history" title="History" aria-label="Session history">&#9776;</button>
+    </div>
+  </div>
+
+  <!-- History Panel -->
+  <div id="history-panel">
+    <div class="panel-header">
+      <h3>History</h3>
+      <button class="panel-close" aria-label="Close history panel">&#10005;</button>
+    </div>
+    <div id="history-list"></div>
+    <button class="history-clear">Clear All History</button>
+  </div>
+
+  <!-- Sound Settings Panel -->
+  <div id="sound-panel">
+    <div class="panel-header">
+      <h4>Alarm Sound</h4>
+      <button class="panel-close" aria-label="Close sound settings">&#10005;</button>
+    </div>
+    <div class="tone-presets"></div>
+    <div class="volume-row">
+      <label for="volume-slider">Volume</label>
+      <input id="volume-slider" type="range" min="0" max="100" value="70" aria-label="Alarm volume" />
+      <span class="volume-val">70%</span>
+    </div>
+  </div>
+
+  <!-- Break Overlay -->
+  <div id="break-overlay" role="dialog" aria-labelledby="break-title">
+    <h2 id="break-title">TAKE A BREAK</h2>
+    <p>5 minute short break</p>
+    <button>START BREAK</button>
+  </div>
+
+  <script type="module" src="/src/renderer/index.ts"></script>
+</body>
+</html>
